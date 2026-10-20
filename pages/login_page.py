@@ -13,7 +13,9 @@ class LoginPage:
         self.page.goto("https://parabank.parasoft.com")
 
     def login(self, username: str, password:str):
-        print("login pakai:", username,password)
         self.username.fill(username)
         self.password.fill(password)
         self.login_button.click()
+
+    def logout(self):
+        self.logout_button.click()
