@@ -10,7 +10,7 @@ class LoginPage:
         self.err_message = page.locator("p.error")
 
     def goto(self):
-        self.page.goto("https://parabank.parasoft.com")
+        self.page.goto("/parabank/index.htm")
 
     def login(self, username: str, password:str):
         self.username.fill(username)

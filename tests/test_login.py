@@ -25,3 +25,4 @@ def test_logout(logged_in_page):
 
     expect(login_page.login_button).to_be_visible()
     expect(login_page.logout_button).to_be_hidden()
+

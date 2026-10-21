@@ -18,8 +18,7 @@ class RegisterPage:
         self.welcome_heading = page.locator("#rightPanel h1")
 
     def goto(self):
-        self.page.goto("https://parabank.parasoft.com")
-        self.page.get_by_role("link", name="Register").click()
+        self.page.goto("/parabank/register.htm")
     
     def fill_valid_form(self, unique_username:str):
         self.first_name.fill("Haryadi")
