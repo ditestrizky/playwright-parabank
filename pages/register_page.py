@@ -1,8 +1,11 @@
-from playwright.sync_api import Page, expect
+from playwright.sync_api import Page
+from pages.base_page import BasePage
 
-class RegisterPage:
+class RegisterPage(BasePage):
+    path = "/parabank/register.htm"
+
     def __init__(self, page: Page):
-        self.page = page
+        super().__init__(page)
         self.first_name = page.locator("#customer\\.firstName")
         self.last_name = page.locator("#customer\\.lastName")
         self.street = page.locator("#customer\\.address\\.street")
@@ -15,10 +18,7 @@ class RegisterPage:
         self.password = page.locator("#customer\\.password")
         self.confirm_password = page.locator("#repeatedPassword")
         self.register_button = page.get_by_role("button", name="Register")
-        self.welcome_heading = page.locator("#rightPanel h1")
-
-    def goto(self):
-        self.page.goto("/parabank/register.htm")
+        self.welcome_heading = self.right_panel.locator("h1")
     
     def fill_valid_form(self, unique_username:str):
         self.first_name.fill("Haryadi")
