@@ -1,4 +1,3 @@
-import os
 import uuid
 import pytest
 from playwright.sync_api import Page, expect
@@ -14,6 +13,7 @@ def test_register_valid(page: Page):
 
     expect(register_page.welcome_heading).to_have_text(f"Welcome {unique_username}")
 
+    #Opsi Lain: to_contain_text("Welcome") -> cukup untuk cek sebagian teks saja, tidak harus sama persis
     #expect(page.locator("#rightPanel h1")).to_contain_text("Welcome")
 
 @pytest.mark.parametrize("field_name",[
