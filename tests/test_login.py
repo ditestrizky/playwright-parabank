@@ -1,19 +1,19 @@
-import os
 import re
 from playwright.sync_api import Page, expect
 from pages.login_page import LoginPage
 
-def test_login_valid(page: Page):
+def test_login_valid(page: Page, credentials):
+    username, password = credentials
     login_page = LoginPage(page)
     login_page.goto()
-    login_page.login(os.getenv("PB_USER"),os.getenv("PB_PASS"))
+    login_page.login(username, password)
     expect(page).to_have_url(re.compile("overview"))
     expect(login_page.logout_button).to_be_visible()
     
 def test_login_empty_password(page: Page):
     login_page = LoginPage(page)
     login_page.goto()
-    login_page.login("john","")
+    login_page.login("john", "")
 
     expect(login_page.err_message).to_have_text(
         "Please enter a username and password."
